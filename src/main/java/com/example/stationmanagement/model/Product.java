@@ -13,6 +13,6 @@ public class Product {
     private int idProductTemplate;
 
     public static final String ID = "id";
-    public static final String ID_STATION = "idStation";
-    public static final String ID_PRODUCT_TEMPLATE = "idProductTemplate";
+    public static final String ID_STATION = "id_station";
+    public static final String ID_PRODUCT_TEMPLATE = "id_product_template";
 }

@@ -20,6 +20,6 @@ public class StockMovement {
     public static final String DATE = "date";
     public static final String TYPE = "type";
     public static final String QUANTITY = "quantity";
-    public static final String ID_STOCK_VIEW = "idStockView";
+    public static final String ID_STOCK_VIEW = "id_stock_view";
 }
 
