@@ -1,4 +1,4 @@
-CREATE TABLE stock_mouvement (
+CREATE TABLE stock_movement (
                                  id SERIAL PRIMARY KEY,
                                  date TIMESTAMP,
                                  type VARCHAR(10),
@@ -11,7 +11,7 @@ CREATE TABLE station (
                          name VARCHAR(50),
                          address VARCHAR(50),
                          list_product VARCHAR(50),
-                         id_stock_mouvement INT REFERENCES stock_mouvement(id)
+                         id_stock_movement INT REFERENCES stock_movement(id)
 );
 
 CREATE TABLE stock_view (
@@ -28,7 +28,7 @@ CREATE TABLE product_template (
                                   price DOUBLE PRECISION,
                                   evaporation_rate_per_day NUMERIC,
                                   id_stock_view INT REFERENCES stock_view(id),
-                                  id_stock_mouvement INT REFERENCES stock_mouvement(id)
+                                  id_stock_movement INT REFERENCES stock_movement(id)
 );
 
 CREATE TABLE product (
