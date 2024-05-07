@@ -18,7 +18,7 @@ public class StationServiceImpl implements StationService{
 
     @Override
     public List<Station> getAllStation() throws SQLException {
-        return stationRepository.getAllStockMouvements();
+        return stationRepository.getAllStation();
     }
 
     @Override

@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class StockMouvement {
+public class StockMovement {
     private int id;
     private Timestamp date;
     private String type;

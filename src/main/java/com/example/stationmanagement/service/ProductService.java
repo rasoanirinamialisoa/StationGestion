@@ -9,5 +9,6 @@ public interface ProductService {
     List<Product> getAllProduct() throws SQLException;
     Product getProductById(int id) throws SQLException;
     Product createProduct (Product product) throws SQLException;
-    Product updtateProduct(int id, Product product) throws SQLException;
+    Product updateProduct(int id, Product product) throws SQLException;
+
 }

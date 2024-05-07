@@ -34,7 +34,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product updtateProduct(int id, Product product) throws SQLException {
+    public Product updateProduct(int id, Product product) throws SQLException {
         return productRepository.updateProduct(id, product);
     }
 }
