@@ -1,16 +1,18 @@
 package com.example.stationmanagement.repository;
 
+import com.example.stationmanagement.config.ConnectDatabase;
 import com.example.stationmanagement.model.Product;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
 @Repository
 public class ProductRepositoryImpl implements ProductRepository{
-
     @Override
     public List<Product> getAllProducts() throws SQLException {
+
         return null;
     }
 

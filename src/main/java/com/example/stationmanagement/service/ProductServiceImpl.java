@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Service
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private final ProductRepository productRepository;
@@ -17,6 +17,7 @@ public class ProductServiceImpl implements ProductService{
     public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
+
     @Override
     public List<Product> getAllProduct() throws SQLException {
         return productRepository.getAllProducts();
