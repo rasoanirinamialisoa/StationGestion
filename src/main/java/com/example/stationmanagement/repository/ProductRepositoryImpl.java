@@ -43,11 +43,12 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public Product createProduct(Product product) throws SQLException {
-        String query = "INSERT INTO product (id, id_station, id_product_template) VALUES (?, ?, ?)";
+        String query = "INSERT INTO product (id, id_station, id_product_template, id_stock_movement) VALUES (?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setInt(1, product.getId());
             preparedStatement.setInt(2, product.getIdStation());
             preparedStatement.setInt(3, product.getIdProductTemplate());
+            preparedStatement.setInt(4, product.getIdStockMovement());
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
@@ -60,11 +61,12 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public Product updateProduct(int id, Product product) throws SQLException {
-        String query = "UPDATE product SET id_station = ?, id_product_template = ? WHERE id = ?";
+        String query = "UPDATE product SET id_station = ?, id_product_template = ?, id_stock_movement = ? WHERE id = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, product.getIdStation());
             preparedStatement.setInt(2, product.getIdProductTemplate());
-            preparedStatement.setInt(3, id);
+            preparedStatement.setInt(3, product.getIdStockMovement());
+            preparedStatement.setInt(4, id);
 
             int updatedRows = preparedStatement.executeUpdate();
             if (updatedRows > 0) {
@@ -74,12 +76,12 @@ public class ProductRepositoryImpl implements ProductRepository {
         return null;
     }
 
-
     private Product mapResultSetToProduct(ResultSet resultSet) throws SQLException {
         Product product = new Product();
         product.setId(resultSet.getInt(Product.ID));
         product.setIdStation(resultSet.getInt(Product.ID_STATION));
         product.setIdProductTemplate(resultSet.getInt(Product.ID_PRODUCT_TEMPLATE));
+        product.setIdStockMovement(resultSet.getInt(Product.ID_STOCK_MOVEMENT));
         return product;
     }
 }
