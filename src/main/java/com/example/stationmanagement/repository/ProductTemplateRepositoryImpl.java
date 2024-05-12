@@ -2,6 +2,7 @@ package com.example.stationmanagement.repository;
 
 import com.example.stationmanagement.config.ConnectDatabase;
 import com.example.stationmanagement.model.ProductTemplate;
+import com.example.stationmanagement.model.StockView;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -11,6 +12,7 @@ import java.util.List;
 @Repository
 public class ProductTemplateRepositoryImpl implements ProductTemplateRepository {
 
+    private static final double DAYS_SINCE_LAST_UPDATE = 10;
     private final ConnectDatabase connectDatabase = ConnectDatabase.getInstance();
     private final Connection connection = connectDatabase.getConnection();
 
@@ -86,6 +88,23 @@ public class ProductTemplateRepositoryImpl implements ProductTemplateRepository 
         }
         return null;
     }
+
+
+    @Override
+    public void updateRemainingQuantity(int id, double newRemainingQuantity) {
+        String query = "UPDATE stock_view SET remaining_quantity = ? WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setDouble(1, newRemainingQuantity);
+            preparedStatement.setInt(2, id);
+            int updatedRows = preparedStatement.executeUpdate();
+            if (updatedRows == 0) {
+                throw new SQLException("Updating stock view failed, no rows affected.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private ProductTemplate mapResultSetToProductTemplate(ResultSet resultSet) throws SQLException {
         ProductTemplate productTemplate = new ProductTemplate();

@@ -36,4 +36,10 @@ public class ProductTemplateController {
     public ProductTemplate updateProductTemplate(@PathVariable int id, @RequestBody ProductTemplate productTemplate) throws SQLException {
         return productTemplateService.updateProductTemplate(id, productTemplate);
     }
+
+    @PutMapping("/product-template/update/remaining-quantity")
+    public void updateRemainingQuantity(int id, double newRemainingQuantity) throws SQLException {
+        productTemplateService.updateRemainingQuantity(id, newRemainingQuantity);
+    }
+
 }

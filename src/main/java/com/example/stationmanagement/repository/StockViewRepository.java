@@ -11,4 +11,5 @@ public interface StockViewRepository {
     StockView getStockViewById(int id) throws SQLException;
     StockView createStockView(StockView stockView) throws SQLException;
     StockView updateStockView(int id, StockView stockView) throws SQLException;
+
 }

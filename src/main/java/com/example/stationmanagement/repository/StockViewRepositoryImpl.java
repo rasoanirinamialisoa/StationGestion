@@ -50,6 +50,7 @@ public class StockViewRepositoryImpl implements StockViewRepository {
             preparedStatement.setDouble(2, stockView.getQuantityAdded());
             preparedStatement.setDouble(3, stockView.getQuantitySold());
             preparedStatement.setDouble(4, stockView.getRemainingQuantity());
+            preparedStatement.setInt(5, stockView.getIdProductTemplate());
 
             int rowsAffected = preparedStatement.executeUpdate();
             if (rowsAffected > 0) {
@@ -67,6 +68,9 @@ public class StockViewRepositoryImpl implements StockViewRepository {
         }
     }
 
+
+
+
     @Override
     public StockView updateStockView(int id, StockView stockView) throws SQLException {
         String query = "UPDATE stock_view SET date = ?, quantity_added = ?, quantity_sold = ?, remaining_quantity = ? WHERE id = ?";
@@ -75,7 +79,8 @@ public class StockViewRepositoryImpl implements StockViewRepository {
             preparedStatement.setDouble(2, stockView.getQuantityAdded());
             preparedStatement.setDouble(3, stockView.getQuantitySold());
             preparedStatement.setDouble(4, stockView.getRemainingQuantity());
-            preparedStatement.setInt(5, id);
+            preparedStatement.setInt(5, stockView.getIdProductTemplate());
+            preparedStatement.setInt(6, id);
 
             int updatedRows = preparedStatement.executeUpdate();
             if (updatedRows > 0) {
@@ -86,6 +91,8 @@ public class StockViewRepositoryImpl implements StockViewRepository {
     }
 
 
+
+
     private StockView mapResultSetToStockView(ResultSet resultSet) throws SQLException {
         StockView stockView = new StockView();
         stockView.setId(resultSet.getInt(StockView.ID));
@@ -93,6 +100,7 @@ public class StockViewRepositoryImpl implements StockViewRepository {
         stockView.setQuantityAdded(resultSet.getDouble(StockView.QUANTITY_ADDED));
         stockView.setQuantitySold(resultSet.getDouble(StockView.QUANTITY_SOLD));
         stockView.setRemainingQuantity(resultSet.getDouble(StockView.REMAINING_QUANTITY));
+        stockView.setIdProductTemplate(resultSet.getInt(StockView.ID_PRODUCT_TEMPLATE));
         return stockView;
     }
 }

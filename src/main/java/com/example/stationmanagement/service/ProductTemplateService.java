@@ -10,4 +10,5 @@ public interface ProductTemplateService {
     ProductTemplate getProductTemplateById(int id) throws  SQLException;
     ProductTemplate createProductTemplate(ProductTemplate productTemplate) throws SQLException;
     ProductTemplate updateProductTemplate(int id, ProductTemplate productTemplate) throws SQLException;
+    void updateRemainingQuantity(int id, double newRemainingQuantity);
 }

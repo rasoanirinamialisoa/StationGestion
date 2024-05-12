@@ -37,4 +37,11 @@ public class ProductTemplateServiceImpl implements ProductTemplateService{
     public ProductTemplate updateProductTemplate(int id, ProductTemplate productTemplate) throws SQLException {
         return productTemplateRepository.updateProductTemplate(id, productTemplate);
     }
+
+    @Override
+    public void updateRemainingQuantity(int id, double newRemainingQuantity) {
+        productTemplateRepository.updateRemainingQuantity(id, newRemainingQuantity);
+    }
+
+
 }
